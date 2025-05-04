@@ -9,6 +9,7 @@ import {Button} from "@/components/ui/button";
 import{NavbarSidebar} from "./navbar-sidebar";
 import{useState} from "react"
 import{MenuIcon} from "lucide-react";
+import logo from "../logo.png"
 
 const poppins = Poppins({
     subsets:["latin"],
@@ -52,6 +53,7 @@ export const Navbar =() =>{
     const [isSidebarOpen,setIsSidebarOpen]=useState(true);
     return (
        <nav className="h-20 flex border-b justify-between font-medium bg-white">
+          <img src="/logo.png"/>
           <Link href="/" className="pl-6 flex items-center">
               <span className={cn("text-5xl font-semibold",poppins.className)}>
                     canvastocase
