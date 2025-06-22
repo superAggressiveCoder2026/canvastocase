@@ -22,9 +22,10 @@ export const NavbarSidebar = ( {
   items,
   open,
   onOpenChange,
+  
 }:Props) => {
     return(
-    <Sheet open={open} onOpenChange={onOpenChange}>
+    <Sheet open={open} onOpenChange={onOpenChange} >
       <SheetContent 
           side="left"
           className="p-0 transition"

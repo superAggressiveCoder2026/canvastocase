@@ -1,8 +1,10 @@
 import { Category } from "@/payload-types";
 import  Link  from "next/link";
 
+import { CategoriesGetManyOutput } from "@/modules/categories/types";
+
 interface Props{
-    category:Category;
+    category:CategoriesGetManyOutput[1];
     isOpen:boolean;
     position:{top: number; left: number};
 }
@@ -11,8 +13,7 @@ export const SubcategoryMenu =({
     isOpen,
     position,
 }:Props) =>{
-    const subcategories = category.subcategories?.docs;
-    
+
     if(!isOpen || !category.subcategories || category.subcategories.length === 0){
         return null;
     }
@@ -34,7 +35,7 @@ export const SubcategoryMenu =({
             {category.subcategories?.map((subcategory:Category) =>(
                 <Link
                  key={subcategory.slug}
-                 href="/"
+                 href={`/${category.slug}/${subcategory.slug}`}
                   className="w-full text-left p-4 hover:bg-black hover:text-white flex justify-between items-center underline font-medium"
                 >
                     {subcategory.name}
