@@ -1,4 +1,4 @@
-
+ 
 import {headers as getHeaders} from "next/headers";
 import { baseProcedure,createTRPCRouter } from "@/trpc/init";
 import { TRPCError } from "@trpc/server";
@@ -26,6 +26,7 @@ export const authRouter= createTRPCRouter({
                     equals:input.username,
                 },
             },
+        
         });
 
         const existingUser = existingData.docs[0];
@@ -35,6 +36,14 @@ export const authRouter= createTRPCRouter({
                 message:"Username already taken",
             });
         }
+        const tenant =await ctx.db.create({
+            collection:"tenants",
+            data:{
+                name:input.username,
+                slug:input.username,
+                stripeAccountId:"test"
+            }
+        })
 
         await ctx.db.create({
             collection:"users",
@@ -42,6 +51,12 @@ export const authRouter= createTRPCRouter({
                 email:input.email,
                 username:input.username,
                 password:input.password,
+                tenants:[
+                    {
+                        tenant:tenant.id
+
+                    },
+                ],
             },
         });
 

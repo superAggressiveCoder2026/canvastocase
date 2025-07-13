@@ -7,8 +7,8 @@ export const Tags: CollectionConfig = {
   },
   fields: [
     {
-      name: 'name',
-      type: 'text',
+      name: "name",
+      type: "text",
       required: true,
       unique:true,
     },
