@@ -4,7 +4,7 @@ import { payloadCloudPlugin } from '@payloadcms/payload-cloud'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
 import {multiTenantPlugin} from "@payloadcms/plugin-multi-tenant";
 import path from 'path'
-import { buildConfig } from 'payload'
+import {  buildConfig } from 'payload'
 import { fileURLToPath } from 'url'
 import sharp from 'sharp'
 
@@ -14,6 +14,7 @@ import {Categories} from './collections/categories'
 import { Products } from './collections/products'
 import { Tags } from './collections/Tags'
 import {Tenants} from './collections/Tenants'
+import { Config } from './payload-types';
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -34,10 +35,10 @@ export default buildConfig({
   db: mongooseAdapter({
     url: process.env.DATABASE_URI || '',
   }),
-  sharp,
+  sharp, 
   plugins: [
     payloadCloudPlugin(),
-    multiTenantPlugin({
+    multiTenantPlugin<Config>({
       collections:{
         product:{},
       },

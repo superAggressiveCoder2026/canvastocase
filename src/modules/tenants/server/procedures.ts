@@ -1,4 +1,4 @@
-import { DEFAULT_LIMIT } from "@/constant";
+
 import { Media, Tenant } from "@/payload-types";
 import { baseProcedure,createTRPCRouter } from "@/trpc/init";
 import { TRPCError } from "@trpc/server";
@@ -26,7 +26,7 @@ export const tenantsRouter= createTRPCRouter({
   });
   const tenant=tenantsData.docs[0];
   if (!tenant){
-    throw new TRPCError ({code:"NOT_FOUND",message:"Tenant not found"})
+    throw new TRPCError ({code:"NOT_FOUND",message:"Tenant not found"});
   }
         return tenant as Tenant & {image: Media | null};
 
