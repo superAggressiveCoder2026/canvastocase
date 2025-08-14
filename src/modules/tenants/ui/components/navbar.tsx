@@ -1,11 +1,25 @@
 "use client";
 import { generateTenantURL } from "@/lib/utils";
+ // import { CheckoutButton } from "@/modules/checkout/ui/components/checkout-button";
 import { useTRPC } from "@/trpc/client";
 import { useSuspenseQuery } from "@tanstack/react-query";
-import { Link } from "lucide-react";
-import Image from 'next/image'
+import { Link, ShoppingCartIcon } from "lucide-react";
+import Image from 'next/image';
+import dynamic from "next/dynamic";
+import { Button } from "@/components/ui/button";
 
+const CheckoutButton =dynamic(
+    ()=> import( "@/modules/checkout/ui/components/checkout-button").then(
+        (mod)=>mod.CheckoutButton,
+    ),
+    {
+        ssr:false,
+        loading:()=> <Button disabled className=" bg-white"><ShoppingCartIcon /></Button>
+
+    }
+);
 interface Props{
+
     slug:string;
 };
 
@@ -27,6 +41,7 @@ interface Props{
                )}
                 <p className="text-xl">{data.name}</p>
                 </Link>
+                <CheckoutButton hideIfEmpty tenantSlug={slug}/>
             </div>
         </nav>
     );
@@ -36,6 +51,8 @@ interface Props{
         <nav className="h-20 border-b font medium bg-white">
             <div className="max-w-(--breakpoint-xl) mx-auto flex justify-between items-center h-full px-4 lg:px-12">
                 <div/>
+                <Button disabled className=" bg-white"><ShoppingCartIcon /></Button>
+
             </div>
         </nav>
     );
