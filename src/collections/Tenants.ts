@@ -10,8 +10,8 @@ export const Tenants: CollectionConfig = {
     {
       name:"name",
       required:true,
-      type:"text",
-      label:"store Name",
+      type:"text", 
+      label:"Store Name",
       admin:{
         description:"This is the name of the store(e.g Sidra's Store)",
       },

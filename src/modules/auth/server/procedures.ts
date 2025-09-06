@@ -12,7 +12,7 @@ export const authRouter= createTRPCRouter({
         const session = await ctx.db.auth({headers});
         return session;       
  
-    }),
+    }), 
  
     register:baseProcedure
     .input(registerSchema)
@@ -64,7 +64,7 @@ export const authRouter= createTRPCRouter({
             collection:"users",
             data:{
                 email:input.email,
-                password:input.password,
+                password:input.password, 
             },
         });
         if(!data.token){

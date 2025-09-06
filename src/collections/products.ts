@@ -13,9 +13,12 @@ export const Products:CollectionConfig ={
             type:"text",
         },
         {
-            name:"price ",
+            name:"price",
             type:"number",
             required:true,
+            admin:{
+                description:"Price in USD"
+            }
         },
         {
             name:"category",

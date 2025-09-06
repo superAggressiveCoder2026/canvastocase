@@ -9,7 +9,7 @@ import {useMutation, useQueryClient} from "@tanstack/react-query";
 
 import { registerSchema } from "@/modules/auth/schemas";
 import { useForm } from "react-hook-form";
-import { Link } from "lucide-react";
+import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Poppins } from "next/font/google";
 import { useTRPC } from "@/trpc/client";
@@ -63,7 +63,7 @@ return(
                 <div className="flex items-center justify-between mb-8">
                     <Link href="/">
                       <span className={cn("text-2xl font-semibold",poppins.className)}>
-                          canvas_to_case
+                          canvastocase
                       </span>
                     </Link>
                     <Button 
@@ -71,7 +71,7 @@ return(
                       variant="ghost"
                       size="sm"
                        className="text-base border-none underline">
-                        <Link  href="/sign-in">
+                        <Link prefetch  href="/sign-in">
                             Sign in
                         </Link>
                     </Button>

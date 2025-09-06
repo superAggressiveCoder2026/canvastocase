@@ -9,8 +9,7 @@ const Page =async() =>{
             redirect("/");
         }
 
-    return
-        <SignUpView/>
+    return <SignUpView/>
     
 }
 export default Page;

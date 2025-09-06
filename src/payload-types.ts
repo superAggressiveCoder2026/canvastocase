@@ -219,7 +219,10 @@ export interface Product {
   tenant?: (string | null) | Tenant;
   name: string;
   description?: string | null;
-  'price ': number;
+  /**
+   * Price in USD
+   */
+  price: number;
   category?: (string | null) | Category;
   tags?: (string | Tag)[] | null;
   image?: (string | null) | Media;
@@ -373,7 +376,7 @@ export interface ProductSelect<T extends boolean = true> {
   tenant?: T;
   name?: T;
   description?: T;
-  'price '?: T;
+  price?: T;
   category?: T;
   tags?: T;
   image?: T;

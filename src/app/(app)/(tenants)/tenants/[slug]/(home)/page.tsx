@@ -1,4 +1,4 @@
-import { DEFAULT_LIMIT } from "@/constant";
+/*import { DEFAULT_LIMIT } from "@/constant";
 import { loadProductFilters } from "@/modules/products/search-Params";
 import { ProductListView } from "@/modules/products/ui/views/product-list-view";
 import { getQueryClient, trpc } from "@/trpc/server";
@@ -25,4 +25,4 @@ return(
         
 );
 }
-export default Page;
+export default Page;*/

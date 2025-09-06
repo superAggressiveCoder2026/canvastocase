@@ -48,22 +48,21 @@ return(
                         <div className="border-y flex">
                             <div className="px-6 py-4 flex items-center justify-center border-r">
                                 <div className="relative px-2 py-1 border bg-pink-400 w-fit">
-                                   <p className="text-base font-medium">{formatCurrency(data["price "])}</p>
+                                   <p className="text-base font-medium">{formatCurrency(data.price )}</p>
                                 </div>
                             </div>
                             <div className="px-6 py-4 flex items-center justify-center lg:border-r">
                                 <Link href={generateTenantURL(tenantSlug)} className="flex items-center gap-2">
-                                  {data.tenant.image?.url && (
+                                  
                                     <Image
-                                    src={data.tenant.image.url}
-                                    alt={data.tenant.name}
+                                    // src={data.tenant.image.url}
+                                    //alt={data.tenant.name}
                                     width={20}
                                     height={20}
-                                    className="rounded-full border shrink-0 size-[20px]"
-                                    />
-                                  )}
+                                    className="rounded-full border shrink-0 size-[20px]" src={""} alt={""}                                    />
+                                  
                                   <p className="text-base underline font-medium">
-                                    {data.tenant.name}
+                                    
                                   </p>
                                 </Link>
                             </div>

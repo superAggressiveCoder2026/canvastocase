@@ -12,7 +12,7 @@ const Page =async () =>{
         redirect("/");
     }
 
-    return  <SignInView email={""} password={""}  /> 
+    return  <SignInView /*email={""} password={""}*/  /> 
     
 }
 export default Page;

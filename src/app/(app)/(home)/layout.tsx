@@ -21,7 +21,7 @@ const Layout = async ({ children }: Props) => {
   return (
     <div className="flex flex-col min-h-screen">
       <Navbar />
-      <HydrationBoundary>
+      <HydrationBoundary state={undefined} >
         <Suspense fallback={<SearchFiltersSkeleton/>}>
       <SearchFilters />
       </Suspense>

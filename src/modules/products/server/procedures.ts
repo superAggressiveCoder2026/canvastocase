@@ -23,7 +23,7 @@ export const productsRouter= createTRPCRouter({
       return{
         ...product,
         image:product.image as Media |null,
-        tenant:product.tenant as Tenant & {image:Media | null},
+        //tenant:product.tenant as Tenant & {image:Media | null},
       }
     }),
     getMany:baseProcedure
@@ -36,11 +36,11 @@ export const productsRouter= createTRPCRouter({
         maxPrice:z.string().nullable().optional(),
         tags:z.array(z.string()).nullable().optional(),
         sort:z.enum(sortValues).nullable().optional(),
-        tenantSlug:z.string().nullable().optional(),
+        //tenantSlug:z.string().nullable().optional(),
       }),
     )
   .query(async({ctx,input})=>{   
-    const where:Where  ={};
+    const where:Where={};
     let sort:Sort="-createdAt";
 
     if (input.sort ==="curated"){
@@ -56,7 +56,7 @@ export const productsRouter= createTRPCRouter({
 
 if (input.minPrice && input.maxPrice){
   where.price={
-     greater_than_equal:input.minPrice,
+     greater_than_equal: input.minPrice,
     less_than_equal:input.maxPrice,
   }
 }else if (input.minPrice){
@@ -69,11 +69,11 @@ if (input.minPrice && input.maxPrice){
     less_than_equal:input.maxPrice
   }
 }
-if(input.tenantSlug){
+/*if(input.tenantSlug){
   where["tenant.slug"]={
     equals:input.tenantSlug,
   };
-}
+}*/
 
 
     if (input.category){
@@ -125,7 +125,7 @@ if(input.tenantSlug){
           docs:data.docs.map((doc)=>({
             ...doc,
             image:doc.image as Media ||null, 
-            tenant:doc.tenant as Tenant &{image:Media|null},
+            /*tenant:doc.tenant as Tenant &{image:Media|null},*/
           }))
         }
     }),

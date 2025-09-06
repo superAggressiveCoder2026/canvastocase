@@ -43,7 +43,7 @@ export const ProductFilters=() =>{
         if(typeof value === "string"){
             return value !== "";
         }
-        return value !==null;
+        return value !== null;
     });
 
     const onClear=()=>{
@@ -64,11 +64,10 @@ export const ProductFilters=() =>{
                {hasAnyFilters && (
                     <button className="underline cursor-pointer" onClick={()=>onClear()} type="button">
                          Clear
-                </button>
+                 </button>
                )}
-          
             </div> 
-            <ProductFilter title="Price" >
+            <ProductFilter title="Price">
                 <PriceFilter
                 minPrice={filters.minPrice}
                 maxPrice={filters.maxPrice}

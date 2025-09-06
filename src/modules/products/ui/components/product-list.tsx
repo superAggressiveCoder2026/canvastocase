@@ -9,17 +9,17 @@ import { InboxIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 interface Props{
     category?:string;
-    tenantSlug?:string;
+    /*tenantSlug?:string;*/
     narrowView?:boolean;
 };
 
-export const ProductList =({category,tenantSlug,narrowView}:Props) =>{
+export const ProductList =({category,/*tenantSlug*/narrowView}:Props) =>{
     const [filters]=useProductFilters();
     const trpc= useTRPC();
     const{data,hasNextPage,isFetchingNextPage,fetchNextPage}=useSuspenseInfiniteQuery(trpc.products.getMany.infiniteQueryOptions(
         {...filters, 
             category,
-            tenantSlug,
+            /*tenantSlug,*/
             limit: DEFAULT_LIMIT,},
         {
             getNextPageParam:(lastPage)=>{
@@ -40,16 +40,15 @@ return(
         <div className={cn("grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid cols-3 2xl:grid-cols-4 gap-4",narrowView && "lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-3")}>
             {data?.pages.flatMap((page)=>page.docs).map((product)=>(
                 <ProductCard
-                key={product.id}
-                id={product.id}
-                name={product.name}
-                imageUrl={product.image?.url}
-                tenantSlug={product.tenant?.slug}
-                tenantImageUrl={product.tenant?.image?.url}
-                reviewRating={3}
-                reviewCount={5}
-                price={product["price "] }
-                />
+                    key={product.id}
+                    id={product.id}
+                    name={product.name}
+                    imageUrl={product.image?.url}
+                    // authorUsername="sidra"
+                    // authorImageUrl={undefined}
+                    reviewRating={3}
+                    reviewCount={5}
+                    price={product.price} tenantSlug={""}                />
             ))}
         </div>
         <div className="flex justify-center pt-8">
@@ -59,7 +58,7 @@ return(
                 onClick={()=> fetchNextPage()}
                 className="font-medium disabled:opacity-50 text-base bg-white"
                 >
-                    Load more
+ Load more
                 </Button>
             )}
         </div>
